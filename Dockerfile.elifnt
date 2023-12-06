@@ -1,18 +1,27 @@
 FROM ubuntu:latest
 
+# Install dependencies
 RUN apt-get update && apt-get install -y \
     build-essential \
+    curl \
+    file \
+    git \
     libssl-dev \
     libffi-dev \
-    zlib1g-dev \
-    git
+    zlib1g-dev
 
-WORKDIR /usr/src
-RUN git clone https://github.com/nishu-builder/cpython.git
+# Install Homebrew
+RUN /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
-WORKDIR /usr/src/cpython
-RUN ./configure
-RUN make && make install
+# Add Homebrew to PATH
+ENV PATH="/home/linuxbrew/.linuxbrew/bin:${PATH}"
+
+# Accept version as a build argument
+ARG ELIFNT_VERSION=3.13.0a1-0.0.5
+
+# Install python-elifnt from Homebrew, force overwriting conflicting files
+RUN brew tap nishu-builder/elifnt
+RUN brew install python-elifnt@$ELIFNT_VERSION || (brew link --overwrite python-elifnt@$ELIFNT_VERSION && brew install python-elifnt@$ELIFNT_VERSION)
 
 # Keep the container running
 CMD ["tail", "-f", "/dev/null"]
