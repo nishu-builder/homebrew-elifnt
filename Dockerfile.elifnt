@@ -17,7 +17,7 @@ RUN /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/instal
 ENV PATH="/home/linuxbrew/.linuxbrew/bin:${PATH}"
 
 # Accept version as a build argument
-ARG ELIFNT_VERSION=3.13.0a1-0.0.5
+ARG ELIFNT_VERSION=3.13.0a1-0.0.6
 
 # Install python-elifnt from Homebrew, force overwriting conflicting files
 RUN brew tap nishu-builder/elifnt-distribution
