@@ -8,7 +8,7 @@
 
 5. Test it locally: `brew install --build-from-source elifnt@3.13.0a1-0.0.x.rb`
 
-6. Push new brew package file to homebrew-elifnt-distribution github repo
+6. Push new brew package file to homebrew-elifnt github repo
 
 7. Build docker image with new tag: `docker build --build-arg ELIFNT_VERSION=3.13.0a1-0.0.x . -f=Dockerfile.elifnt -t nishubuilder/python-elifnt:3.13.0a1-0.0.x`
 

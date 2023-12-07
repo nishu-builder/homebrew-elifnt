@@ -20,7 +20,7 @@ ENV PATH="/home/linuxbrew/.linuxbrew/bin:${PATH}"
 ARG ELIFNT_VERSION=3.13.0a1-0.0.6
 
 # Install python-elifnt from Homebrew, force overwriting conflicting files
-RUN brew tap nishu-builder/elifnt-distribution
+RUN brew tap nishu-builder/elifnt
 RUN brew install python-elifnt@$ELIFNT_VERSION || (brew link --overwrite python-elifnt@$ELIFNT_VERSION && brew install python-elifnt@$ELIFNT_VERSION)
 
 # Keep the container running
