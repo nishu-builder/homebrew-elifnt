@@ -4,7 +4,7 @@
 
 3. Download the .tar.gz, get its hash: `shasum -a 256 cpython-elifnt-0.0.x.tar.gz`
 
-4. Make a new brew package file here
+4. Make a new brew package file here. Link the latest to it: `ln -s python-elifnt@3.13.0a1-0.0.x.rb python-elifnt.rb`
 
 5. Test it locally: `brew install --build-from-source elifnt@3.13.0a1-0.0.x.rb`
 
